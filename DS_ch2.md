@@ -1,8 +1,11 @@
 
-#Leetcode 102 return level order traversal
-##BFS
+# BFS
+## Leetcode 102 return level order traversal
+## BFS
 BFS用Queue(橫向遍歷)，DFS用stack(豎向遍歷)
+
 https://leetcode.com/problems/binary-tree-level-order-traversal/
+
 ```java
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
@@ -38,4 +41,4 @@ class Solution {
     }
 }
 ```
-##Leetcode 107. return bottom up Level Order Traversal
+## Leetcode 107. return bottom up Level Order Traversal
