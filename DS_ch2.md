@@ -1,5 +1,5 @@
 
-##Leetcode 102 return level order traversal
+#Leetcode 102 return level order traversal
 ##BFS
 BFS用Queue(橫向遍歷)，DFS用stack(豎向遍歷)
 https://leetcode.com/problems/binary-tree-level-order-traversal/
