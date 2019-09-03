@@ -100,7 +100,10 @@ public class Solution {
 
 ## LeetCode 297. Serialize and Deserialize Binary Tree
 serialize: converting a data structure or object into a sequence of bits.
+
 deserialize: covert string to data structure.
+
+* Used: ArrayList, StringBuilder, subString, split
 
 ```java
 public class Codec {
