@@ -96,3 +96,83 @@ public class Solution {
     }
 }
 ```
+
+
+## LeetCode 297. Serialize and Deserialize Binary Tree
+serialize: converting a data structure or object into a sequence of bits.
+deserialize: covert string to data structure.
+
+```java
+public class Codec {
+
+    public String serialize(TreeNode root) {
+
+        if (root == null) {
+            return "{}";
+        }
+        ArrayList<TreeNode> list = new ArrayList<>();
+        list.add(root);
+
+        for (int i = 0; i < list.size(); i++) {
+            TreeNode head = list.get(i); //head is a pointer
+            if (head == null) {
+                continue;
+            }
+            list.add(head.left);
+            list.add(head.right);
+
+        }
+
+        while (list.get(list.size() - 1) == null) {
+            list.remove(list.size() - 1);
+        }
+        
+        //use StringBuilder with append method to make up string
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        sb.append(root.val);
+
+        for (int i = 1; i < list.size(); i++) {
+            if (list.get(i) == null) {
+                sb.append(",N");
+            } else {
+                sb.append("," + list.get(i).val);
+            }
+        }
+        sb.append("}");
+        return sb.toString();
+    }
+
+    public TreeNode deserialize(String data) {
+        if (data.equals("{}")) {
+            return null;
+        }
+        String[] nums = data.substring(1, data.length() - 1).split(",");
+
+        ArrayList<TreeNode> list = new ArrayList<>();
+        TreeNode root = new TreeNode(Integer.parseInt(nums[0]));
+        list.add(root);
+
+        boolean isLeft = true;                   //the first child node is left
+        int index = 0;                           //used to point which node's left or right
+        for (int i = 1; i < nums.length; i++) {  //start with the i = 1 node
+
+            if (!nums[i].equals("N")) {
+                TreeNode node = new TreeNode(Integer.parseInt(nums[i]));
+                if (isLeft) {
+                    list.get(index).left = node;
+                } else {
+                    list.get(index).right = node;
+                }
+                list.add(node);
+            }
+            if (!isLeft) {
+                index++; //when the node is on the right(!isLeft when i is even), the index should move to the next node
+            }
+            isLeft = !isLeft;
+        }
+        return root;
+    }
+
+}
+```
