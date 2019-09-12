@@ -213,4 +213,113 @@ HashMap<String, Integer> map = new HashMap<>();
 - clone(): return a shallow copy of the mentioned hash map.
 
 * HashSet
+no key with no duplicate values.
+
+Solution 1:
+https://www.lintcode.com/problem/clone-graph/description
+```java
+class GraphNode {
+    int val;
+    List<GraphNode> neighbors;
+
+    GraphNode(int _val) {
+        val = _val;
+        neighbors = new ArrayList<>();
+    }
+};
+
+public class CloneGraph {
+    /**
+     * @param node: A  graph node
+     * @return: A  graph node
+     */
+    public GraphNode cloneGraph(GraphNode node) {
+        if (node == null) {
+            return node;
+        }
+
+        // use bfs algorithm to traverse the graph and get all nodes.
+        ArrayList<GraphNode> nodes = getNodes(node);  //ArrayList<GraphNode> nodes = new ArrayList<>()
+
+        // copy nodes, store the old->new mapping information in a hash map
+        HashMap<GraphNode, GraphNode> map = new HashMap<>();
+        for (int i = 0; i < nodes.size(); i++) {
+            map.put(nodes.get(i), new GraphNode(nodes.get(i).val)); //map裡面的node 現在只有點沒有鄰居關係
+            //map put -> (key: Node(val:2, nb:[1,3]) / Node(val: 2, nb:null) )
+        }
+
+        // copy neighbors(edges)
+        for (GraphNode n : nodes) {
+            GraphNode newNode = map.get(n);
+            for (GraphNode neighbor : n.neighbors) {
+                GraphNode newNeighbor = map.get(neighbor);
+                newNode.neighbors.add(newNeighbor);
+            }
+        }
+
+        return map.get(node); //get key return value, which is the copied node
+    }
+
+    private ArrayList<GraphNode> getNodes(GraphNode node) {
+        Queue<GraphNode> queue = new LinkedList<GraphNode>();
+        HashSet<GraphNode> set = new HashSet<>();
+
+        queue.offer(node);
+        set.add(node);
+        while (!queue.isEmpty()) {
+            GraphNode head = queue.poll();
+            for (GraphNode neighbor : head.neighbors) {
+                if (!set.contains(neighbor)) {
+                    set.add(neighbor);
+                    queue.offer(neighbor);
+                }
+            }
+        }
+
+        return new ArrayList<GraphNode>(set);
+    }
+}
+```
+Solution 2:
+https://leetcode.com/problems/clone-graph/
+```java
+class Node {
+    int val;
+    List<Node> neighbors;
+
+    Node(int _val, List<Node> _neighbors) {
+        val = _val;
+        neighbors = _neighbors;
+    }
+}
+
+public class Clone {
+    public Node cloneGraph(Node node) {
+        if (node == null) {
+            return node;
+        }
+        HashMap<Integer, Node> map = new HashMap<>();
+        map.put(node.val, new Node(node.val, new ArrayList<>())); //not yet put the neighbors in
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(node);
+
+        while (!queue.isEmpty()) {
+            Node head = queue.poll();
+            if (head.neighbors == null || head.neighbors.size() == 0) continue;
+            for (Node n : head.neighbors) {
+                if (!map.containsKey(n.val)) {
+                    queue.add(n);
+                    map.put(n.val, new Node(n.val, new ArrayList<>()));
+                }
+                map.get(head.val).neighbors.add(map.get(n.val));
+                //connect the neighbors into the neighbors in map by getting n.val from the
+            }
+
+        }
+        return map.get(node.val);
+    }
+}
+```
+
 
