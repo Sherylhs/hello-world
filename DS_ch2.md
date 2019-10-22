@@ -8,6 +8,10 @@
 ## Leetcode 102 return level order traversal
 
 BFS用Queue(橫向遍歷)，DFS用stack(豎向遍歷)
+Steps:
+1. 新建一個new ArrayList 來裝每一層level的list
+2. 進行層級遍歷 利用queue 來判斷並取出該層的node數量
+3. 檢查每一層節點 若有left or right則加入queue 前往下一個level
 
 https://leetcode.com/problems/binary-tree-level-order-traversal/
 
@@ -63,7 +67,7 @@ Collections.reverse()
 ## Lintcode 242. Convert Binary Tree to Linked Lists by Depth
 透過：
 dummy 不變作為頭
-taile 不停往右移動，去遍歷每一層級的所有Node直到沒有
+tail 不停往右移動，去遍歷每一層級的所有Node直到沒有
 再透過for循環進入下一層，直到最後一層
 
   0    -> null
