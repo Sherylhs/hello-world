@@ -65,6 +65,8 @@ Collections.reverse()
 
 
 ## Lintcode 242. Convert Binary Tree to Linked Lists by Depth
+
+https://www.lintcode.com/problem/convert-binary-tree-to-linked-lists-by-depth/description
 透過：
 dummy 不變作為頭
 tail 不停往右移動，去遍歷每一層級的所有Node直到沒有
