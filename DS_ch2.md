@@ -48,12 +48,12 @@ class Solution {
 ```
 ```java
 //Tree node:
- TreeNode {
+public class TreeNode {
    int val;
-   TreeNode *left;
-   TreeNode *right;
-   TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-}
+   TreeNode left;
+   TreeNode right;
+   TreeNode(int x) { val = x; }
+ }
 ```
 
 ## Leetcode 107. return bottom up Level Order Traversal
