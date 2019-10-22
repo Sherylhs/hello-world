@@ -46,6 +46,16 @@ class Solution {
     }
 }
 ```
+```java
+//Tree node:
+ TreeNode {
+   int val;
+   TreeNode *left;
+   TreeNode *right;
+   TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+}
+```
+
 ## Leetcode 107. return bottom up Level Order Traversal
 Collections.reverse() 
 
