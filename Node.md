@@ -2,8 +2,11 @@
 
 Steps:
 - 開始遍歷所有node
-- 將原本只像next的指針指向previous 
-- current繼續下一個node, prev跟進
+- next 存放 current.next
+- 將原本指向 next 的指針 指向previous 
+- prev 前進到 current
+- current 繼續跳到 next(next node)
+- 循環所有節點
 
 ```java
 /**
