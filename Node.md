@@ -1,5 +1,10 @@
 ## Reverse Linked List
 
+Steps:
+- 開始遍歷所有node
+- 將原本只像next的指針指向previous 
+- current繼續下一個node, prev跟進
+
 ```java
 /**
  * Definition for singly-linked list.
