@@ -1,4 +1,5 @@
-DFS : 
+- LeetCode 17: Letter Combinations of a Phone Number 
+
 给一个不包含'0'和'1'的数字字符串，每个数字代表一个字母，请返回其所有可能的字母组合。
 
 下图的手机按键图，就表示了每个数字可以代表的字母。
@@ -44,9 +45,8 @@ class Solution {
             helper(digits, sb, map, result);
             sb.deleteCharAt(sb.length()-1);
         }
-        
-        
-        
     }
 }
 ```
+- DFS appraoch:
+
