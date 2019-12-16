@@ -13,7 +13,7 @@ Explanation: t is "ece" which its length is 3.
 
 Approach 1: Sliding Window
 
-```{java}
+```java
 class Solution {
   public int lengthOfLongestSubstringTwoDistinct(String s) {
     int n = s.length();
